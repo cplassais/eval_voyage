@@ -1,3 +1,20 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_home:
+  path: /
+  controller: App\Controller\ContentController::display
+  defaults:
+    title: 'Home'
+app_cgv:
+  path: /cgv/{title}
+  controller: App\Controller\ContentController::display
+  defaults:
+    title: 'CGV'
+app_mention:
+  path: /mention/{title}
+  controller: App\Controller\ContentController::display
+  defaults:
+    title: 'Mention'
+app_politique:
+  path: /politique/{title}
+  controller: App\Controller\ContentController::display
+  defaults:
+    title: 'Politique'
