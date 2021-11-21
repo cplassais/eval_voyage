@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Categories;
 use App\Entity\Travel;
+use App\Entity\Tags;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,8 +23,18 @@ class TravelType extends AbstractType
             ->add('image2')
             ->add('image3')
             ->add('pdf')
-            ->add('category')
-            ->add('tag')
+            ->add('category', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label'=>'name',
+                'required' => true
+            ])
+            ->add('tag', EntityType::class, [
+                'class' => Tags::class,
+                'multiple' => true,
+                'choice_label' => 'name',
+                'expanded' => true,
+                'required' => true
+            ])
         ;
     }
 
