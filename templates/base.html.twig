@@ -1,15 +1,15 @@
 <html lang="fr">
-{% include 'includes/_head.html' %}
+{% include 'includes/_head.html.twig' %}
 <body>
 <!-- Navigation-->
-{% include 'includes/_nav.html.twig' %}
+{#{% include 'includes/_nav.html.twig' %}#}
 <!-- Header-->
 {% include 'includes/_header.html.twig' %}
 <!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% block main %} {% endblock %}
+            {% block body %} {% endblock %}
         </div>
     </div>
 </section>
