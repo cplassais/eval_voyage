@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Travel{% endblock %}
+{#{% block title %}AJOUT VOYAGE{% endblock %}#}
 
 {% block body %}
-    <h1>Create new Travel</h1>
+    <h1  class="text-center" style="width: 500px">AJOUT VOYAGE</h1>
 
     {{ include('travel/_form.html.twig') }}
 
-    <a href="{{ path('travel_index') }}">back to list</a>
+    <a class="btn btn-outline-dark mt-auto" href="{{ path('travel_index') }}">Retour à la liste</a>
+
 {% endblock %}
