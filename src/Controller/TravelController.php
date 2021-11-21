@@ -87,7 +87,7 @@ class TravelController extends AbstractController
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $pdfFile->guessExtension();
                 try {
                     $pdfFile->move(
-                        $this->getParameter('img_directory'),
+                        $this->getParameter('pdf_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {
