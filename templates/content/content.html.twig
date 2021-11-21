@@ -1,6 +1,38 @@
 {% extends 'base.html.twig' %}
     {% block body %}
         <div style="min-height:400px;width:85%;" class="text-center">
+            {% if title == "Home" %}
+                <table class="table table-hover">
+                    {# {% if is_granted('ROLE_ADMIN') %} #}
+                    <tr>
+                        <td>
+                            <a type="button"  style="width: 400px" class="btn btn-outline-danger btn-lg" href="{{ path('travel_index') }}"
+                               title="retour">Liste Voyages accès administrateur</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <a type="button"  style="width: 400px" class="btn btn-outline-danger btn-lg" href="{{ path('tags_index') }}"
+                               title="retour">Liste Tags accès administrateur</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a type="button"  style="width: 400px" class="btn btn-outline-danger btn-lg" href="{{ path('categories_index') }}"
+                               title="retour">Liste Catégories accès administrateur</a>
+                        </td>
+                    </tr>
+                    {# {% endif %} #}
+                    <tr>
+                        <td>
+                            <a type="button"  style="width: 400px" class="btn btn-outline-danger btn-lg" href="{{ path('travel_index') }}"
+                               title="retour">Liste Voyages accès utilisateur</a>
+                        </td>
+                    </tr>
+                </table>
+
+            {% endif %}
             {% if title == "CGV" %}
                 <h3>Conditions Générales de Ventes</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est eum inventore obcaecati quae. Adipisci
@@ -13,7 +45,7 @@
                     laudantium nobis quidem rem repudiandae voluptas? Accusamus animi dicta, dolore doloribus earum</p>
             {% endif %}
             {% if title == "Mention" %}
-            <h3>Mentions légales</h3>
+                <h3>Mentions légales</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est eum inventore obcaecati quae. Adipisci
                     assumenda at blanditiis commodi consectetur debitis delectus dignissimos dolor esse eveniet
                     exercitationem, explicabo hic impedit libero minus neque nihil, nostrum numquam officiis optio quae
