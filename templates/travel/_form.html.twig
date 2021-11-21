@@ -1,4 +1,46 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{# {{ form_start(form) }} #}
+{# {{ form_widget(form) }} #}
+{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+{# {{ form_end(form) }} #}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+<div style="width:100%;">
+{#    <h3 class="text-center">FORMULAIRE VOYAGE</h3>#}
+    {{ form_start(form) }}
+    {{ form_row(form.name, {
+        label: 'Nom'
+    }) }}
+    {{ form_row(form.hook, {
+        label: 'Accroche'
+    }) }}
+    {{ form_row(form.description, {
+        label: 'Description'
+    }) }}
+    {{ form_row(form.price, {
+        label: 'Prix'
+    }) }}
+    {{ form_row(form.image1, {
+        label: 'Image1'
+    }) }}
+    {{ form_row(form.image2, {
+        label: 'Image2'
+    }) }}
+    {{ form_row(form.image3, {
+        label: 'Image'
+    }) }}
+    {{ form_row(form.pdf, {
+        label: 'Pdf'
+    }) }}
+    {% for cat in form.tag %}
+        {{ form_label(cat) }}
+        {{ form_widget(cat) }}
+    {% endfor %}
+    {{ form_row(form.category, {
+        label: 'Categorie'
+    }) }}
+        <button type="submit" class="btn btn-outline-dark">Enregistrement</button>
+    {{ form_end(form) }}
+</div>
+
+

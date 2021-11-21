@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Travel index{% endblock %}
+{% block title %} Liste des Voyages{% endblock %}
 
 {% block body %}
-    <h1>Travel index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Hook</th>
+                <th>Nom</th>
+                <th>Accroche</th>
                 <th>Description</th>
-                <th>Price</th>
-                <th>Image1</th>
-                <th>Image2</th>
-                <th>Image3</th>
-                <th>Pdf</th>
+                <th>Prix</th>
+{#                <th>Image1</th>#}
+{#                <th>Image2</th>#}
+{#                <th>Image3</th>#}
+{#                <th>Pdf</th>#}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for travel in travel %}
             <tr>
-                <td>{{ travel.id }}</td>
+                <td><strong></strong>{{ travel.id }}</strong></td>
                 <td>{{ travel.name }}</td>
                 <td>{{ travel.hook }}</td>
                 <td>{{ travel.description }}</td>
-                <td>{{ travel.price }}</td>
-                <td>{{ travel.image1 }}</td>
-                <td>{{ travel.image2 }}</td>
-                <td>{{ travel.image3 }}</td>
-                <td>{{ travel.pdf }}</td>
+                <td>{{ travel.price | number_format(2) }} €</td>
+{#                <td>{{ travel.image1 }}</td>#}
+{#                <td>{{ travel.image2 }}</td>#}
+{#                <td>{{ travel.image3 }}</td>#}
+{#                <td>{{ travel.pdf }}</td>#}
                 <td>
-                    <a href="{{ path('travel_show', {'id': travel.id}) }}">show</a>
-                    <a href="{{ path('travel_edit', {'id': travel.id}) }}">edit</a>
+                    <a class="btn btn-outline-dark" href="{{ path('travel_show', {'id': travel.id}) }}">Détails</a>
+                    <a class="btn btn-outline-dark" href="{{ path('travel_edit', {'id': travel.id}) }}">Modifier</a>
+                    <a class="btn btn-outline-dark"> {{ include('travel/_delete_form.html.twig') }}</a>
                 </td>
             </tr>
         {% else %}
@@ -45,5 +45,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('travel_new') }}">Create new</a>
+    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('travel_new') }}">Ajouter</a></div>
+
 {% endblock %}
