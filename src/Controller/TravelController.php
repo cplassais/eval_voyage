@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use function PHPUnit\Framework\isEmpty;
 
 /**
  * @Route("/travel")
@@ -155,7 +156,7 @@ class TravelController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
-                if ($imgOri1) {
+                if (isset($imgOri1)) {
                     unlink('../public/images/upload/' . $imgOri1);
                 }
                 $travel->setImage1($newFilename);
@@ -175,7 +176,7 @@ class TravelController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
-                if ($imgOri2) {
+                if (isset($imgOri2)) {
                     unlink('../public/images/upload/' . $imgOri2);
                 }
                 $travel->setImage2($newFilename);
@@ -195,7 +196,7 @@ class TravelController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
-                if ($imgOri3) {
+                if (isset($imgOri3)) {
                     unlink('../public/images/upload/' . $imgOri3);
                 }
                 $travel->setImage3($newFilename);
@@ -215,7 +216,7 @@ class TravelController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
-                if ($pdfOri) {
+                if (isset($pdfOri)) {
                     unlink('../public/pdf/upload/' . $pdfOri);
                 }
                 $travel->setPdf($newFilename);
@@ -249,6 +250,23 @@ class TravelController extends AbstractController
     function delete(Request $request, Travel $travel, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $travel->getId(), $request->request->get('_token'))) {
+            $imgOri1 = $travel->getImage1();
+            $imgOri2 = $travel->getImage2();
+            $imgOri3 = $travel->getImage3();
+            $pdfOri = $travel->getPdf();
+
+            if (isset($pdfOri)) {
+                unlink('../public/pdf/upload/' . $pdfOri);
+            }
+            if (isset($imgOri1)) {
+                unlink('../public/images/upload/' . $imgOri1);
+            }
+            if (isset($imgOri2)) {
+                unlink('../public/images/upload/' . $imgOri2);
+            }
+            if (isset($imgOri3)) {
+                unlink('../public/images/upload/' . $imgOri3);
+            }
             $entityManager->remove($travel);
             $entityManager->flush();
         }
