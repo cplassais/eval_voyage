@@ -7,5 +7,20 @@
             <h1 class="text-white my-4">Voyage Voyage</h1>
             <p class="lead fw-normal text-white-50 mb-0 mt-5">With this shop homepage template</p>
         </div>
+        <div>
+            <div class=" d-flex justify-content-end">
+            {% if app.user %}
+                <div class="text-center text-white">
+                    Bonjour {{ app.user.firstname }} {{ app.user.name }}, <a class="text-white"href="{{ path('app_logout') }}" title="LOGOUT">LOGOUT</a>
+                </div>
+            {% endif %}
+            </div>
+            {% if not app.user %}
+            <div class="justify-content-end" >
+                <a class="text-white" href="{{ path('app_login') }}" title="Login">Login</a>
+                <button  class="btn btn-outline-dark"><a class="text-white" href="{{ path('app_register') }}" title="Register">S'enregister</a></button>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </header>
