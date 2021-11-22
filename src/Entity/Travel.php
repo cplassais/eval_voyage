@@ -6,6 +6,7 @@ use App\Repository\TravelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TravelRepository::class)
@@ -26,6 +27,7 @@ class Travel
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank (message="ce champ doit être non vide et non null")
      */
     private $hook;
 
@@ -36,6 +38,8 @@ class Travel
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(type="float", message="Prix invalide")
+     * @Assert\NotBlank (message="ce champ doit être non vide et non null")
      */
     private $price;
 
