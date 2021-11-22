@@ -33,8 +33,10 @@
 {#                <td>{{ travel.pdf }}</td>#}
                 <td>
                     <a class="btn btn-outline-dark" href="{{ path('travel_show', {'id': travel.id}) }}">Détails</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-outline-dark" href="{{ path('travel_edit', {'id': travel.id}) }}">Modifier</a>
                     <a class="btn btn-outline-dark"> {{ include('travel/_delete_form.html.twig') }}</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -44,7 +46,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('travel_new') }}">Ajouter</a></div>
+    {% endif %}
 
 {% endblock %}

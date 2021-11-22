@@ -7,8 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
@@ -40,12 +42,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstname;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $firstname;
 
     public function getId(): ?int
     {
@@ -136,18 +138,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -156,6 +146,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
 
         return $this;
     }

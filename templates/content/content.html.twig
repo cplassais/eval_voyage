@@ -3,7 +3,7 @@
         <div style="min-height:400px;width:85%;" class="text-center">
             {% if title == "Home" %}
                 <table class="table table-hover text-center">
-                    {# {% if is_granted('ROLE_ADMIN') %} #}
+                     {% if is_granted('ROLE_ADMIN') %}
                     <tr>
                         <td>
                             <a type="button"  style="width: 800px" class="btn btn-outline-danger btn-lg" href="{{ path('travel_index') }}"
@@ -23,7 +23,7 @@
                                title="retour">Liste Catégories accès administrateur</a>
                         </td>
                     </tr>
-                    {# {% endif %} #}
+                     {% endif %}
                     <tr>
                         <td>
                             <a type="button"  style="width: 800px" class="btn btn-outline-danger btn-lg" href="{{ path('travel_index') }}"
