@@ -30,6 +30,7 @@ class TravelType extends AbstractType
                         'maxSize' => '4096k',
                         'mimeTypes' => [
                             'image/jpeg',
+                            'image/jpg',
                             'image/png',
                             'image/gif',
                         ],

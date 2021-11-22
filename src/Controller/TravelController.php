@@ -141,7 +141,7 @@ class TravelController extends AbstractController
         $form->handleRequest($request);
         $errors = $validator->validate($travel);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
 
             $imgFile1 = $form->get('image1')->getData();
             if ($imgFile1) {
@@ -224,7 +224,12 @@ class TravelController extends AbstractController
             }
             if (count($errors) > 0) {
                 $errorsString = (string)$errors;
-                return $this->render('error/error.html.twig', ['error' => $errorsString]);
+//                return $this->render('error/error.html.twig', ['error' => $errorsString]);
+                return $this->renderForm('travel/edit.html.twig', [
+                    'travel' => $travel,
+                    'form' => $form,
+                    'error' => $errorsString
+                ]);
             } else {
                 $entityManager->persist($travel);
                 $entityManager->flush();
